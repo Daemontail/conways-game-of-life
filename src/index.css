@@ -1,0 +1,17 @@
+.button-els{
+    display:grid;
+    gap:0.5rem;
+    grid-template-columns: repeat(8,1fr);
+    margin:0 25%;
+}
+
+button{
+    padding:1em;
+}
+
+button.on{
+    background-color: white;
+}
+button.off{
+    background-color: black;
+}
