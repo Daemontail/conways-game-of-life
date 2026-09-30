@@ -1,17 +1,84 @@
-.button-els{
-    display:grid;
-    gap:0.5rem;
-    grid-template-columns: repeat(8,1fr);
-    margin:0 25%;
+@keyframes scroll{
+    0%{
+        background-position:0 0, 50px 50px;
+    }
+    100%{
+        background-position:-1000px -1000px;
+    }
 }
 
-button{
-    padding:1em;
+
+body {
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+    background-color: #121619;
+    background-image: radial-gradient(#212121 10%, transparent 10%);
+    background-position: 0 0;
+    background-size: 50px 50px;
+    height: 200px;
+    width: 100%;
+    animation:scroll 60s linear infinite;
 }
 
-button.on{
+h1 {
+    color: #D0F9FB
+}
+
+.button-els {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    margin: 0 25%;
+    justify-items: center;
+    align-items: center;
+}
+
+.button-els>button {
+    border: none;
+    transition: all 0.2s;
+}
+
+.button-els>button.off:hover {
+    background-color: #D0F9FB;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+button {
+    padding: 1.5em;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+button.on {
     background-color: white;
 }
-button.off{
-    background-color: black;
+
+button.off {
+    background-color: #0B7C8C;
+}
+
+button:disabled {
+    cursor: not-allowed
+}
+
+button.toggle{
+    margin-bottom:40px;
+    background-color:#212121;
+    color:whitesmoke;
+    border:none;
+    border-radius: 20px;
+    transition:all 0.1s;
+}
+
+button.toggle:hover{
+    background-color: #D0F9FB;
+    color:#212121;
 }

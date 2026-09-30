@@ -3,32 +3,24 @@ export function generateMatrix(num: number):number[][] {
     return arr
 }
 
+export function checkNeighbours(matrix: number[][]): number[][] {
+  return matrix.map((row, rowI) =>
+    row.map((cell, colI) => {
+      let neighbours = 0;
 
-export function checkNeighbours(matrix: number[][]) {
-    const newMatrix = matrix.map((row: number[], rowI: number) => {
-        return row.map((num: number, colI: number) => {
-            let fate: number = 0
+      for (let i = rowI - 1; i <= rowI + 1; i++) {
+        for (let j = colI - 1; j <= colI + 1; j++) {
+          if (i === rowI && j === colI) continue;
+          if (i >= 0 && i < matrix.length && j >= 0 && j < matrix[i].length) {
+            neighbours += matrix[i][j];
+          }
+        }
+      }
 
-            for (let i = rowI - 1; i < rowI + 1; i++) {
-                for (let j = colI - 1; j < colI + 1; i++) {
-                    if(i<0 || j<0) return
-                    if (j === rowI && i === colI) return
-                    fate += matrix[i][j]
-                }
-            }
-
-            if(matrix[rowI][colI] === 0 && fate === 3){
-                return 1
-            }
-            if(matrix[rowI][colI]!=0 && fate>=2 && fate<=3){
-                return 1
-            }
-            else return 0
-
-        })
+      if (cell === 1) return neighbours === 2 || neighbours === 3 ? 1 : 0;
+      return neighbours === 3 ? 1 : 0;
     })
-    console.table(newMatrix)
-    return newMatrix
+  );
 }
 
 export function flipVal(matrix:number[][],rowI:number,colI:number){
